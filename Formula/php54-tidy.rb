@@ -9,16 +9,12 @@ class Php54Tidy < AbstractPhp54Extension
   head 'https://svn.php.net/repository/php/php-src/trunk', :using => :svn
 
   depends_on 'php54'
-  depends_on 'dupes/tidy'
+  depends_on 'homebrew/dupes/tidy'
 
   def install
     Dir.chdir "ext/tidy" do
-      args = "--with-tidy=#{Formula.factory('tidy').prefix},shared"
-      args << " --prefix=#{prefix}"
-      args << " --with-homebrew-openssl" if MacOS.version == :leopard
-
       safe_phpize
-      system "./configure", args
+      system "./configure"
       system "make"
       prefix.install "modules/tidy.so"
     end
