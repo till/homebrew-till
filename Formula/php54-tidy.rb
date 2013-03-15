@@ -17,6 +17,7 @@ class Php54Tidy < AbstractPhp54Extension
       system "./configure"
       system "make"
       prefix.install "modules/tidy.so"
+      write_config_file unless build.include? "without-config-file"
     end
   end
 
