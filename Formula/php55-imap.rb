@@ -10,8 +10,8 @@ class Php55Imap < AbstractPhp54Extension
   version PHP_VERSION
   head    PHP_GITHUB_URL, :branch => PHP_BRANCH
 
+  depends_on 'imap-uw'
   depends_on 'php55'
-  #depends_on 'homebrew/dupes/tidy'
 
   def install
     Dir.chdir "ext/imap" do
