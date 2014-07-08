@@ -16,7 +16,9 @@ class Php55Imap < AbstractPhp55Extension
   def install
     Dir.chdir "ext/imap" do
       safe_phpize
-      system "./configure"
+      system "./configure", "--prefix=#{prefix}",
+                            phpconfig,
+                            "--disable-dependency-tracking",
       system "make"
       prefix.install "modules/imap.so"
       write_config_file unless build.include? "without-config-file"
