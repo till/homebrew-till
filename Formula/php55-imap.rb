@@ -1,6 +1,6 @@
 require File.join(File.dirname(__FILE__), 'abstract-php-extension')
 
-class Php55Imap < AbstractPhp54Extension
+class Php55Imap < AbstractPhp55Extension
 
   init
   include AbstractPhpVersion::Php55Defs
