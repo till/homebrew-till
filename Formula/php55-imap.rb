@@ -18,7 +18,7 @@ class Php55Imap < AbstractPhp55Extension
       safe_phpize
       system "./configure", "--prefix=#{prefix}",
                             phpconfig,
-                            "--disable-dependency-tracking",
+                            "--disable-dependency-tracking"
       system "make"
       prefix.install "modules/imap.so"
       write_config_file unless build.include? "without-config-file"
