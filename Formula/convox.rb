@@ -10,10 +10,12 @@ class Convox < Formula
 
   depends_on "go" => :build
 
-  def install
-		system "go", "get", "github.com/convox/rack/..."
 
-    bin.install "convox"
+	def install
+    ENV['GOPATH'] = buildpath
+    system "go", "get", "./cmd/convox"
+
+    bin.install "#{ENV['GOPATH']}/bin/convox"
   end
 
   test do
